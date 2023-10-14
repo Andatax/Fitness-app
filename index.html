@@ -12,16 +12,17 @@
 		<script src="https://cdn.tailwindcss.com"></script>
 	</head>
 	<body
-		class="w-screen h-screen bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-green-100 to-green-300"
+		class="w-screen h-screen bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-green-50 to-green-200"
 	>
 		<nav
 			class="bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-emerald-600 to-emerald-800 p-4 rounded-b-md shadow-xl"
 		>
 			<div class="w-full h-full flex items-center justify-between">
-				<h1 class="text-emerald-50 text-5xl font-bold">Stay Fit</h1>
+				<h1 class="text-white text-5xl font-bold">StayFit</h1>
 				<div class="flex">
 					<div class="relative text-gray-600 focus-within:text-gray-400 flex items-center px-1">
 						<input
+							id="search-input"
 							type="text"
 							class="py-2 pl-4 pr-4 rounded-full bg-zinc-50 bg-opacity-90 focus:outline-none focus:bg-white focus:ring focus:ring-emerald-600 focus:text-gray-900"
 							placeholder="Search"
@@ -53,49 +54,56 @@
 		</nav>
 		<div class="container mx-auto py-8">
 			<div class="bg-zinc-50 bg-opacity-90 rounded-3xl shadow-lg p-6">
-				<h2 class="text-4xl font-bold mb-4 text-emerald-900">Food</h2>
+				<h2 id="food-title" class="text-4xl font-bold mb-4 text-emerald-900">Food</h2>
 				<h3 class="text-3xl font-semibold mb-4 text-emerald-900">Nutrition Facts</h3>
 				<ul class="list-none pl-6 text-emerald-700 text-xl">
-					<li>Item 1</li>
-					<li>Item 2</li>
-					<li>Item 3</li>
+					<li id="cardMainCalories">Calories</li>
+					<li id="cardMainServingSize">Serving Size</li>
+					<li id="cardMainCarbs">Total Carbohydrate</li>
+					<li id="cardMainProtein">Total Protein</li>
+					<li id="cardMainFat">Total Fat</li>
+					<li id="cardMainFiber">Fiber</li>
 				</ul>
 			</div>
 
 			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-6">
 				<div class="bg-zinc-50 bg-opacity-90 rounded-3xl shadow-lg p-4">
-					<h4 class="text-xl text-emerald-900 font-bold mb-2">Activity 1</h4>
+					<h4 id="activity1-title" class="text-xl text-emerald-900 font-bold mb-2">Activity 1</h4>
 					<ul class="list-none pl-6 text-emerald-700 text-lg">
-						<li>Item 1</li>
-						<li>Item 2</li>
-						<li>Item 3</li>
+						<li id="card1CalHourSlow">Calories per hour slow :</li>
+						<li id="card1minsSlow">Minutes to burn 100g of :</li>
+						<li id="card1CalHourMod">Calories per hour moderate :</li>
+						<li id="card1minsMod">Minutes to burn 100g of :</li>
 					</ul>
 				</div>
 
 				<div class="bg-zinc-50 bg-opacity-90 rounded-3xl shadow-lg p-4">
-					<h4 class="text-lg text-emerald-900 font-bold mb-2">Activity 2</h4>
+					<h4 id="activity2-title" class="text-lg text-emerald-900 font-bold mb-2">Activity 2</h4>
 					<ul class="list-none pl-6 text-emerald-700 text-lg">
-						<li>Item 1</li>
-						<li>Item 2</li>
-						<li>Item 3</li>
+						<li id="card2CalHourSlow">Calories per hour slow :</li>
+						<li id="card2minsSlow">Minutes to burn 100g of :</li>
+						<li id="card2CalHourMod">Calories per hour moderate :</li>
+						<li id="card2minsMod">Minutes to burn 100g of :</li>
 					</ul>
 				</div>
 
 				<div class="bg-zinc-50 bg-opacity-90 rounded-3xl shadow-lg p-4">
-					<h4 class="text-lg font-bold mb-2 text-emerald-900">Activity 3</h4>
+					<h4 id="activity3-title" class="text-lg font-bold mb-2 text-emerald-900">Activity 3</h4>
 					<ul class="list-none pl-6 text-emerald-700 text-lg">
-						<li>Item 1</li>
-						<li>Item 2</li>
-						<li>Item 3</li>
+						<li id="card3CalHourSlow">Calories per hour slow :</li>
+						<li id="card3minsSlow">Minutes to burn 100g of :</li>
+						<li id="card3CalHourMod">Calories per hour moderate :</li>
+						<li id="card3minsMod">Minutes to burn 100g of :</li>
 					</ul>
 				</div>
 
 				<div class="bg-zinc-50 bg-opacity-90 rounded-3xl shadow-lg p-4">
-					<h4 class="text-lg font-bold mb-2 text-emerald-900">Activity 4</h4>
+					<h4 id="activity4-title" class="text-lg font-bold mb-2 text-emerald-900">Activity 4</h4>
 					<ul class="list-none pl-6 text-emerald-700 text-lg">
-						<li>Item 1</li>
-						<li>Item 2</li>
-						<li>Item 3</li>
+						<li id="card4CalHourSlow">Calories per hour slow :</li>
+						<li id="card4minsSlow">Minutes to burn 100g of :</li>
+						<li id="card4CalHourMod">Calories per hour moderate :</li>
+						<li id="card4minsMod">Minutes to burn 100g of :</li>
 					</ul>
 				</div>
 			</div>
