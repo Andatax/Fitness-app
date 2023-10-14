@@ -10,6 +10,7 @@
 			crossorigin="anonymous"
 		></script>
 		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="js/index.js"></script>
 	</head>
 	<body
 		class="w-screen h-screen bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-green-50 to-green-200"
@@ -440,7 +441,7 @@
 		<!------------------------------------------ Modal----------------------------------->
 		<div
 			id="modalSelector"
-			class="relative z-10 hidden"
+			class="relative z-10"
 			aria-labelledby="modal-title"
 			role="dialog"
 			aria-modal="true"
@@ -455,7 +456,7 @@
       From: "opacity-100"
       To: "opacity-0"
   -->
-			<div id="modal-window" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+			<div id="modal-backdrop" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
 			<div class="fixed inset-0 z-10 w-screen overflow-y-auto">
 				<div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
