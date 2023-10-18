@@ -76,6 +76,7 @@ htmlSelectors.search[1].click(function (event) {
 					console.error("Error: ", error);
 				});
 		})
+		//hola, esta es una prueba de pull request.
 		.catch((error) => {
 			console.error("Error: ", error);
 		});
