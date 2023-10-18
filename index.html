@@ -4,13 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Stay Fit</title>
-		<script
-			src="https://code.jquery.com/jquery-3.7.1.js"
-			integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-			crossorigin="anonymous"
-		></script>
 		<script src="https://cdn.tailwindcss.com"></script>
-		<script src="js/index.js"></script>
 	</head>
 	<body
 		class="w-screen h-screen bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-green-50 to-green-200"
@@ -441,7 +435,7 @@
 		<!------------------------------------------ Modal----------------------------------->
 		<div
 			id="modalSelector"
-			class="relative z-10"
+			class="relative z-10 hidden"
 			aria-labelledby="modal-title"
 			role="dialog"
 			aria-modal="true"
@@ -521,5 +515,13 @@
 				</div>
 			</div>
 		</div>
+		<footer>
+			<script
+				src="https://code.jquery.com/jquery-3.7.1.min.js"
+				integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+				crossorigin="anonymous"
+			></script>
+			<script src="./js/index.js"></script>
+		</footer>
 	</body>
 </html>
