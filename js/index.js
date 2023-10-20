@@ -65,7 +65,7 @@ function updateMainCard(data) {
 		// For simplicity, let's assume each activity's calorie burn rate 
 		// is provided in calories per minute.
 		activitiesData.forEach((activityData, index) => {
-			const burnRatePerMinute = activityData.caloriesBurnedPerMinute; // adjust based on your data's structure
+			const burnRatePerMinute = activityData.caloriesBurnedPerMinute; // adjust based on data's structure
 			const minutesRequired = foodCalories / burnRatePerMinute;
 	
 			const activitySelectors = htmlSelectors[`activity${index + 1}`];
@@ -73,7 +73,7 @@ function updateMainCard(data) {
 			activitySelectors[0].text(activityData.activityName); 
 			activitySelectors[1].text(burnRatePerMinute + " kcal/min"); 
 			activitySelectors[2].text(minutesRequired.toFixed(2) + " mins"); 
-			// ... Adjust as necessary for your data and DOM structure
+			// ... Fiel for Adjusments as necessary for data and DOM structure
 		});
 	}
 	
