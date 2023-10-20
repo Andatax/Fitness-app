@@ -45,11 +45,38 @@ const htmlSelectors = {
 	modal404: [$("#modal404Selector"), $("#modal404-backdrop"), $("#modal404-window"), $("#btn404-modal")],
 };
 
+
 const activities = ["Running", "rope", "cycling", "climbing"];
 const apiNutritionURL = "https://api.api-ninjas.com/v1/nutrition?query=";
 // const apiActivityURL = 'https://api.api-ninjas.com/v1/caloriesburned?activity='; url api to check activities list
 const apiExerciseURL = "https://api.api-ninjas.com/v1/caloriesburned?activity=";
 const apiKey = "UV6648NeZT4RY5GoyCFnDSijoyoNqcMMuF33K3fD";
+
+function updateMainCard(data) {
+    if (data && data.length > 0) {
+        const foodInfo = data[0];
+        htmlSelectors.mainCard[0].text(foodInfo.item);
+        htmlSelectors.mainCard[1].text(foodInfo.calories + " kcal");
+        htmlSelectors.mainCard[2].text(foodInfo.serving_size);
+	}
+	}
+
+	function updateActivityCards(activitiesData, foodCalories) {
+		// For simplicity, let's assume each activity's calorie burn rate 
+		// is provided in calories per minute.
+		activitiesData.forEach((activityData, index) => {
+			const burnRatePerMinute = activityData.caloriesBurnedPerMinute; // adjust based on your data's structure
+			const minutesRequired = foodCalories / burnRatePerMinute;
+	
+			const activitySelectors = htmlSelectors[`activity${index + 1}`];
+	
+			activitySelectors[0].text(activityData.activityName); 
+			activitySelectors[1].text(burnRatePerMinute + " kcal/min"); 
+			activitySelectors[2].text(minutesRequired.toFixed(2) + " mins"); 
+			// ... Adjust as necessary for your data and DOM structure
+		});
+	}
+	
 htmlSelectors.search[1].click(function (event) {
 	event.preventDefault();
 	let searchInput = htmlSelectors.search[0].val();
@@ -68,6 +95,7 @@ htmlSelectors.search[1].click(function (event) {
 				modalAnimation("modal404");
 			} else {
 				modalAnimation("modalDisclaimer");
+				updateMainCard(NutritionalFactsData);  
 			}
 			fetch("https://api.api-ninjas.com/v1/caloriesburned?activity=" + activities[0], {
 				method: "GET",
@@ -79,6 +107,7 @@ htmlSelectors.search[1].click(function (event) {
 					//----------------------------- function to update activities card and local storage save-----------------------------------------------------------
 
 					console.log(activitiesData);
+					updateActivityCards(activitiesData, NutritionalFactsData[0].calories);
 				})
 				.catch((error) => {
 					console.error("Error: ", error);
@@ -100,4 +129,4 @@ let modalAnimation = (objKey) => {
 		event.preventDefault();
 		htmlSelectors[objKey][0].addClass("hidden");
 	});
-};
+}
