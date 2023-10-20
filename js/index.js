@@ -40,7 +40,9 @@ const htmlSelectors = {
 		$("#card4CalHourModerate"),
 		$("#card4minsModerate"),
 	],
-	modal: [$("#modalSelector"), $("#modal-backdrop"), $("#modal-window"), $("#btn-modal")],
+	modalDisclaimer: [$("#modalSelector"), $("#modal-backdrop"), $("#modal-window"), $("#btn-modal")],
+
+	modal404: [$("#modal404Selector"), $("#modal404-backdrop"), $("#modal404-window"), $("#btn404-modal")],
 };
 
 const activities = ["Running", "rope", "cycling", "climbing"];
@@ -62,6 +64,11 @@ htmlSelectors.search[1].click(function (event) {
 		.then((NutritionalFactsData) => {
 			//----------------------------- Main card function update and local storage save-----------------------------------------------------------
 			console.log(NutritionalFactsData);
+			if (NutritionalFactsData.length === 0) {
+				modalAnimation("modal404");
+			} else {
+				modalAnimation("modalDisclaimer");
+			}
 			fetch("https://api.api-ninjas.com/v1/caloriesburned?activity=" + activities[0], {
 				method: "GET",
 				headers: { "X-Api-Key": apiKey },
@@ -70,6 +77,7 @@ htmlSelectors.search[1].click(function (event) {
 				.then((response) => response.json())
 				.then((activitiesData) => {
 					//----------------------------- function to update activities card and local storage save-----------------------------------------------------------
+
 					console.log(activitiesData);
 				})
 				.catch((error) => {
@@ -81,3 +89,15 @@ htmlSelectors.search[1].click(function (event) {
 			console.error("Error: ", error);
 		});
 });
+
+let modalAnimation = (objKey) => {
+	htmlSelectors[objKey][0].removeClass("hidden");
+	htmlSelectors[objKey][1].removeClass("opacity-0");
+	htmlSelectors[objKey][1].addClass("opacity-100");
+	htmlSelectors[objKey][2].removeClass("opacity-0 translate-y-4 sm:translate-y-0");
+	htmlSelectors[objKey][2].addClass("opacity-100 translate-y-0 sm:scale-100");
+	htmlSelectors[objKey][3].click(function (event) {
+		event.preventDefault();
+		htmlSelectors[objKey][0].addClass("hidden");
+	});
+};
