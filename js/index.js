@@ -55,13 +55,13 @@ const apiKey = "UV6648NeZT4RY5GoyCFnDSijoyoNqcMMuF33K3fD";
 function updateMainCard(data) {
     if (data && data.length > 0) {
         const foodInfo = data[0];
-        htmlSelectors.mainCard[0].text(foodInfo.item);
+        htmlSelectors.mainCard[0].text(foodInfo.name .toUpperCase());
         htmlSelectors.mainCard[1].text(foodInfo.calories + " kcal");
-        htmlSelectors.mainCard[2].text(foodInfo.serving_size);
-		htmlSelectors.mainCard[3].text(foodInfo.carbs + " g"); 
-        htmlSelectors.mainCard[4].text(foodInfo.protein + " g"); 
-        htmlSelectors.mainCard[5].text(foodInfo.fat + " g"); 
-        htmlSelectors.mainCard[6].text(foodInfo.fiber + " g");
+        htmlSelectors.mainCard[2].text(`Serving size: ${foodInfo.serving_size_g} g`);
+		htmlSelectors.mainCard[3].text(`Carbohydrates: ${foodInfo.carbohydrates_total_g} g`); 
+        htmlSelectors.mainCard[4].text(`Protein: ${foodInfo.protein_g} g`); 
+        htmlSelectors.mainCard[5].text(`TotalFat: ${foodInfo.fat_total_g}g`); 
+        htmlSelectors.mainCard[6].text(`Fiber: ${foodInfo.fiber_g}g`);
 	}
 	}
 
@@ -101,6 +101,7 @@ htmlSelectors.search[1].click(function (event) {
 				modalAnimation("modalDisclaimer");
 				updateMainCard(NutritionalFactsData);  
 			}
+			// execute udpadateActuvutiescards???
 			fetch("https://api.api-ninjas.com/v1/caloriesburned?activity=" + activities[0], {
 				method: "GET",
 				headers: { "X-Api-Key": apiKey },
