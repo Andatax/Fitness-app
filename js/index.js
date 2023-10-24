@@ -58,6 +58,10 @@ function updateMainCard(data) {
         htmlSelectors.mainCard[0].text(foodInfo.item);
         htmlSelectors.mainCard[1].text(foodInfo.calories + " kcal");
         htmlSelectors.mainCard[2].text(foodInfo.serving_size);
+		htmlSelectors.mainCard[3].text(foodInfo.carbs + " g"); 
+        htmlSelectors.mainCard[4].text(foodInfo.protein + " g"); 
+        htmlSelectors.mainCard[5].text(foodInfo.fat + " g"); 
+        htmlSelectors.mainCard[6].text(foodInfo.fiber + " g");
 	}
 	}
 
@@ -73,7 +77,7 @@ function updateMainCard(data) {
 			activitySelectors[0].text(activityData.activityName); 
 			activitySelectors[1].text(burnRatePerMinute + " kcal/min"); 
 			activitySelectors[2].text(minutesRequired.toFixed(2) + " mins"); 
-			// ... Fiel for Adjusments as necessary for data and DOM structure
+			// ... Field for Adjusments as necessary for data and DOM structure
 		});
 	}
 	
