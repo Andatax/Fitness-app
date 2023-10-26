@@ -156,6 +156,7 @@ let functionCard1 = (activitiesData, data) => {
 	htmlSelectors.activity1[3].text(`Fast pace: ${activitiesData[4].calories_per_hour} kcal/hr`);
 	htmlSelectors.activity1[4].text(minutesRequiredModerate + " mins");
 
+	// Create an array of activity 1 data to store in local storage
 	const activity1Data = [
         "Walking",
         `Slow pace: ${activitiesData[3].calories_per_hour} kcal/hr`,
@@ -202,6 +203,21 @@ let functionCard2 = (activitiesData, data) => {
 	htmlSelectors.activity2[2].text(minutesRequiredSlow + " mins");
 	htmlSelectors.activity2[3].text(`Fast: ${activitiesData[1].calories_per_hour} kcal/hr`);
 	htmlSelectors.activity2[4].text(minutesRequiredModerate + " mins");
+
+	// Create an array of activity 2 data to store in local storage
+	const activity2Data = [
+		"Jumping Rope", 'Slow: ' + activitiesData[2].calories_per_hour + ' kcal/hr',
+		minutesRequiredSlow + " mins",
+		'Fast: ' + activitiesData[1].calories_per_hour + ' kcal/hr',
+		minutesRequiredModerate + " mins"
+	];
+
+	// Convert the array to JSON string
+	const activity2DataString = JSON.stringify(activity2Data);
+	
+	// Store the array in local storage
+	localStorage.setItem("activity2Data", activity2DataString);
+
 };
 
 let functionCard3 = (activitiesData, data) => {
@@ -217,6 +233,22 @@ let functionCard3 = (activitiesData, data) => {
 	htmlSelectors.activity3[2].text(minutesRequiredSlow + " mins");
 	htmlSelectors.activity3[3].text(`Fast: ${activitiesData[3].calories_per_hour} kcal/hr`);
 	htmlSelectors.activity3[4].text(minutesRequiredModerate + " mins");
+
+	// Create an array of activity 3 data to store in local storage
+	const activity3Data = [
+		"Cycling",
+		'Slow: ' + activitiesData[4].calories_per_hour + ' kcal/hr',
+		minutesRequiredSlow + " mins",
+		'Fast: ' + activitiesData[3].calories_per_hour + ' kcal/hr',
+		minutesRequiredModerate + " mins"
+	];
+	
+	// Convert the array to JSON string
+	const activity3DataString = JSON.stringify(activity3Data);
+
+	// Store the array in local storage
+	localStorage.setItem("activity3Data", activity3DataString);
+
 };
 
 let functionCard4 = (activitiesData, data) => {
@@ -232,4 +264,20 @@ let functionCard4 = (activitiesData, data) => {
 	htmlSelectors.activity4[2].text(minutesRequiredSlow + " mins");
 	htmlSelectors.activity4[3].text(`Fast: ${activitiesData[0].calories_per_hour} kcal/hr`);
 	htmlSelectors.activity4[4].text(minutesRequiredModerate + " mins");
+
+	// Create an array of activity 4 data to store in local storage
+	const activity4Data = [
+		"Rock Climbing",
+		'Slow: ' + activitiesData[1].calories_per_hour + ' kcal/hr',
+		minutesRequiredSlow + " mins",
+		'Fast: ' + activitiesData[0].calories_per_hour + ' kcal/hr',
+		minutesRequiredModerate + " mins"
+	];
+	
+	// Convert the array to JSON string
+	const activity4DataString = JSON.stringify(activity4Data);
+
+	// Store the array in local storage
+	localStorage.setItem("activity4Data", activity4DataString);
+
 };
