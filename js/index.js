@@ -70,6 +70,17 @@ function updateMainCard(data) {
 	}
 }
 
+// Retrieve stored data from local storage on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const storedDataString = localStorage.getItem('mainCardData');
+   
+    if (storedDataString) {
+        const storedData = JSON.parse(storedDataString);
+        updateMainCard(storedData);
+    }
+});
+
+
 htmlSelectors.search[1].click(function (event) {
 	event.preventDefault();
 	let searchInput = htmlSelectors.search[0].val();
