@@ -220,6 +220,22 @@ let functionCard2 = (activitiesData, data) => {
 
 };
 
+window.addEventListener('DOMContentLoaded', function() {
+	// Retrieve the data from local storage
+	const activity2DataString = localStorage.getItem('activity2Data');
+	const activity2Data = JSON.parse(activity2DataString);
+
+	// Check if the data exists
+	if (activity2Data) {
+	// Update the HTML elements with the retrieved data
+	  htmlSelectors.activity2[0].text(activity2Data[0]);
+	  htmlSelectors.activity2[1].text(activity2Data[1]);
+	  htmlSelectors.activity2[2].text(activity2Data[2]);
+	  htmlSelectors.activity2[3].text(activity2Data[3]);
+	  htmlSelectors.activity2[4].text(activity2Data[4]);
+	}
+});
+
 let functionCard3 = (activitiesData, data) => {
 	const kal = data[0].calories;
 	console.log(kal);
@@ -251,6 +267,23 @@ let functionCard3 = (activitiesData, data) => {
 
 };
 
+window.addEventListener('DOMContentLoaded', function() {
+	// Retrieve the data from local storage
+	const activity3DataString = localStorage.getItem('activity3Data');
+	const activity3Data = JSON.parse(activity3DataString);
+
+	// Check if the data exists
+	if (activity3Data) {
+	// Update the HTML elements with the retrieved data
+	  htmlSelectors.activity3[0].text(activity3Data[0]);
+	  htmlSelectors.activity3[1].text(activity3Data[1]);
+	  htmlSelectors.activity3[2].text(activity3Data[2]);
+	  htmlSelectors.activity3[3].text(activity3Data[3]);
+	  htmlSelectors.activity3[4].text(activity3Data[4]);
+	}
+});
+
+
 let functionCard4 = (activitiesData, data) => {
 	const kal = data[0].calories;
 	console.log(kal);
@@ -281,3 +314,21 @@ let functionCard4 = (activitiesData, data) => {
 	localStorage.setItem("activity4Data", activity4DataString);
 
 };
+
+window.addEventListener('DOMContentLoaded', function() {
+	
+	// Retrieve the data from local storage
+	const activity4DataString = localStorage.getItem('activity4Data');
+	const activity4Data = JSON.parse(activity4DataString);
+
+	// Check if the data exists
+	if (activity4Data) {
+	// Update the HTML elements with the retrieved data
+	  htmlSelectors.activity4[0].text(activity4Data[0]);
+	  htmlSelectors.activity4[1].text(activity4Data[1]);
+	  htmlSelectors.activity4[2].text(activity4Data[2]);
+	  htmlSelectors.activity4[3].text(activity4Data[3]);
+	  htmlSelectors.activity4[4].text(activity4Data[4]);
+	}
+
+});
