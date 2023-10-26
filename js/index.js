@@ -98,7 +98,7 @@ htmlSelectors.search[1].click(function (event) {
 					.then((activitiesData) => {
 						//----------------------------- function to update activities card and local storage save-----------------------------------------------------------
 						console.log(activityName); // Use activityName instead of 'activity'
-						const activityFunction = [functionCard1];
+						const activityFunction = [functionCard1, functionCard2, functionCard3, functionCard4];
 						console.log(activitiesData);
 						const functionSelector = activityFunction[i];
 						functionSelector(activitiesData, NutritionalFactsData);
@@ -138,4 +138,49 @@ let functionCard1 = (activitiesData, data) => {
 	htmlSelectors.activity1[2].text(minutesRequiredSlow + " mins");
 	htmlSelectors.activity1[3].text(`Fast pace: ${activitiesData[4].calories_per_hour} kcal/hr`);
 	htmlSelectors.activity1[4].text(minutesRequiredModerate + " mins");
+};
+
+let functionCard2 = (activitiesData, data) => {
+	const kal = data[0].calories;
+	console.log(kal);
+	const burnRatePerMinuteSlow = activitiesData[2].calories_per_hour / 60;
+	const burnRatePerMinuteModerate = activitiesData[1].calories_per_hour / 60;
+
+	const minutesRequiredSlow = Math.ceil(kal / burnRatePerMinuteSlow);
+	const minutesRequiredModerate = Math.ceil(kal / burnRatePerMinuteModerate);
+	htmlSelectors.activity2[0].text("Jumping Rope");
+	htmlSelectors.activity2[1].text(`Slow: ${activitiesData[2].calories_per_hour} kcal/hr`);
+	htmlSelectors.activity2[2].text(minutesRequiredSlow + " mins");
+	htmlSelectors.activity2[3].text(`Fast: ${activitiesData[1].calories_per_hour} kcal/hr`);
+	htmlSelectors.activity2[4].text(minutesRequiredModerate + " mins");
+};
+
+let functionCard3 = (activitiesData, data) => {
+	const kal = data[0].calories;
+	console.log(kal);
+	const burnRatePerMinuteSlow = activitiesData[2].calories_per_hour / 60;
+	const burnRatePerMinuteModerate = activitiesData[1].calories_per_hour / 60;
+
+	const minutesRequiredSlow = Math.ceil(kal / burnRatePerMinuteSlow);
+	const minutesRequiredModerate = Math.ceil(kal / burnRatePerMinuteModerate);
+	htmlSelectors.activity3[0].text("Cycling");
+	htmlSelectors.activity3[1].text(`Slow: ${activitiesData[4].calories_per_hour} kcal/hr`);
+	htmlSelectors.activity3[2].text(minutesRequiredSlow + " mins");
+	htmlSelectors.activity3[3].text(`Fast: ${activitiesData[3].calories_per_hour} kcal/hr`);
+	htmlSelectors.activity3[4].text(minutesRequiredModerate + " mins");
+};
+
+let functionCard4 = (activitiesData, data) => {
+	const kal = data[0].calories;
+	console.log(kal);
+	const burnRatePerMinuteSlow = activitiesData[2].calories_per_hour / 60;
+	const burnRatePerMinuteModerate = activitiesData[1].calories_per_hour / 60;
+
+	const minutesRequiredSlow = Math.ceil(kal / burnRatePerMinuteSlow);
+	const minutesRequiredModerate = Math.ceil(kal / burnRatePerMinuteModerate);
+	htmlSelectors.activity4[0].text("Rock Climbing");
+	htmlSelectors.activity4[1].text(`Slow: ${activitiesData[1].calories_per_hour} kcal/hr`);
+	htmlSelectors.activity4[2].text(minutesRequiredSlow + " mins");
+	htmlSelectors.activity4[3].text(`Fast: ${activitiesData[0].calories_per_hour} kcal/hr`);
+	htmlSelectors.activity4[4].text(minutesRequiredModerate + " mins");
 };
