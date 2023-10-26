@@ -61,6 +61,12 @@ function updateMainCard(data) {
 		htmlSelectors.mainCard[4].text(`Protein: ${foodInfo.protein_g} g`);
 		htmlSelectors.mainCard[5].text(`TotalFat: ${foodInfo.fat_total_g}g`);
 		htmlSelectors.mainCard[6].text(`Fiber: ${foodInfo.fiber_g}g`);
+
+		  // Convert data to JSON string
+		  const dataString = JSON.stringify(data);
+       
+		  // Store dataString in local storage
+		  localStorage.setItem('mainCardData', dataString);
 	}
 }
 
