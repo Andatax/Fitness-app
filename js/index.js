@@ -70,6 +70,13 @@ function updateMainCard(data) {
 	}
 }
 
+htmlSelectors.search[0].on("keypress", function (event) {
+	if (event.key === "Enter") {
+		event.preventDefault();
+		htmlSelectors.search[1].click();
+	}
+});
+
 // Retrieve stored data from local storage on page load
 document.addEventListener('DOMContentLoaded', function() {
     const storedDataString = localStorage.getItem('mainCardData');
@@ -79,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateMainCard(storedData);
     }
 });
+
 
 
 htmlSelectors.search[1].click(function (event) {
