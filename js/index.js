@@ -45,42 +45,25 @@ const htmlSelectors = {
 	modal404: [$("#modal404Selector"), $("#modal404-backdrop"), $("#modal404-window"), $("#btn404-modal")],
 };
 
-
-const activities = ["Running", "rope", "cycling", "climbing"];
+const activities = ["walking", "rope", "cycling", "climbing"];
 const apiNutritionURL = "https://api.api-ninjas.com/v1/nutrition?query=";
 // const apiActivityURL = 'https://api.api-ninjas.com/v1/caloriesburned?activity='; url api to check activities list
 const apiExerciseURL = "https://api.api-ninjas.com/v1/caloriesburned?activity=";
 const apiKey = "UV6648NeZT4RY5GoyCFnDSijoyoNqcMMuF33K3fD";
 
 function updateMainCard(data) {
-    if (data && data.length > 0) {
-        const foodInfo = data[0];
-        htmlSelectors.mainCard[0].text(foodInfo.name .toUpperCase());
-        htmlSelectors.mainCard[1].text(foodInfo.calories + " kcal");
-        htmlSelectors.mainCard[2].text(`Serving size: ${foodInfo.serving_size_g} g`);
-		htmlSelectors.mainCard[3].text(`Carbohydrates: ${foodInfo.carbohydrates_total_g} g`); 
-        htmlSelectors.mainCard[4].text(`Protein: ${foodInfo.protein_g} g`); 
-        htmlSelectors.mainCard[5].text(`TotalFat: ${foodInfo.fat_total_g}g`); 
-        htmlSelectors.mainCard[6].text(`Fiber: ${foodInfo.fiber_g}g`);
+	if (data && data.length > 0) {
+		const foodInfo = data[0];
+		htmlSelectors.mainCard[0].text(foodInfo.name.toUpperCase());
+		htmlSelectors.mainCard[1].text(foodInfo.calories + " kcal");
+		htmlSelectors.mainCard[2].text(`Serving size: ${foodInfo.serving_size_g} g`);
+		htmlSelectors.mainCard[3].text(`Carbohydrates: ${foodInfo.carbohydrates_total_g} g`);
+		htmlSelectors.mainCard[4].text(`Protein: ${foodInfo.protein_g} g`);
+		htmlSelectors.mainCard[5].text(`TotalFat: ${foodInfo.fat_total_g}g`);
+		htmlSelectors.mainCard[6].text(`Fiber: ${foodInfo.fiber_g}g`);
 	}
-	}
+}
 
-	function updateActivityCards(activitiesData, foodCalories) {
-		// For simplicity, let's assume each activity's calorie burn rate 
-		// is provided in calories per minute.
-		activitiesData.forEach((activityData, index) => {
-			const burnRatePerMinute = activityData.caloriesBurnedPerMinute; // adjust based on data's structure
-			const minutesRequired = foodCalories / burnRatePerMinute;
-	
-			const activitySelectors = htmlSelectors[`activity${index + 1}`];
-	
-			activitySelectors[0].text(activityData.activityName); 
-			activitySelectors[1].text(burnRatePerMinute + " kcal/min"); 
-			activitySelectors[2].text(minutesRequired.toFixed(2) + " mins"); 
-			// ... Field for Adjusments as necessary for data and DOM structure
-		});
-	}
-	
 htmlSelectors.search[1].click(function (event) {
 	event.preventDefault();
 	let searchInput = htmlSelectors.search[0].val();
@@ -93,32 +76,38 @@ htmlSelectors.search[1].click(function (event) {
 	})
 		.then((response) => response.json())
 		.then((NutritionalFactsData) => {
-			//----------------------------- Main card function update and local storage save-----------------------------------------------------------
 			console.log(NutritionalFactsData);
+
+			//----------------------------- Main card function update and local storage save-----------------------------------------------------------
 			if (NutritionalFactsData.length === 0) {
 				modalAnimation("modal404");
 			} else {
 				modalAnimation("modalDisclaimer");
-				updateMainCard(NutritionalFactsData);  
+				updateMainCard(NutritionalFactsData);
 			}
-			// execute udpadateActuvutiescards???
-			fetch("https://api.api-ninjas.com/v1/caloriesburned?activity=" + activities[0], {
-				method: "GET",
-				headers: { "X-Api-Key": apiKey },
-				contentType: "application/json",
-			})
-				.then((response) => response.json())
-				.then((activitiesData) => {
-					//----------------------------- function to update activities card and local storage save-----------------------------------------------------------
 
-					console.log(activitiesData);
-					updateActivityCards(activitiesData, NutritionalFactsData[0].calories);
+			// Iterate over the activities using a for loop
+			for (let i = 0; i < activities.length; i++) {
+				const activityName = activities[i];
+				fetch("https://api.api-ninjas.com/v1/caloriesburned?activity=" + activityName, {
+					method: "GET",
+					headers: { "X-Api-Key": apiKey },
+					contentType: "application/json",
 				})
-				.catch((error) => {
-					console.error("Error: ", error);
-				});
+					.then((response) => response.json())
+					.then((activitiesData) => {
+						//----------------------------- function to update activities card and local storage save-----------------------------------------------------------
+						console.log(activityName); // Use activityName instead of 'activity'
+						const activityFunction = [functionCard1];
+						console.log(activitiesData);
+						const functionSelector = activityFunction[i];
+						functionSelector(activitiesData, NutritionalFactsData);
+					})
+					.catch((error) => {
+						console.error("Error: ", error);
+					});
+			}
 		})
-		//hola, esta es una prueba de pull request.
 		.catch((error) => {
 			console.error("Error: ", error);
 		});
@@ -134,4 +123,19 @@ let modalAnimation = (objKey) => {
 		event.preventDefault();
 		htmlSelectors[objKey][0].addClass("hidden");
 	});
-}
+};
+
+let functionCard1 = (activitiesData, data) => {
+	const kal = data[0].calories;
+	console.log(kal);
+	const burnRatePerMinuteSlow = activitiesData[2].calories_per_hour / 60;
+	const burnRatePerMinuteModerate = activitiesData[1].calories_per_hour / 60;
+
+	const minutesRequiredSlow = Math.ceil(kal / burnRatePerMinuteSlow);
+	const minutesRequiredModerate = Math.ceil(kal / burnRatePerMinuteModerate);
+	htmlSelectors.activity1[0].text("Walking");
+	htmlSelectors.activity1[1].text(`Slow pace: ${activitiesData[3].calories_per_hour} kcal/hr`);
+	htmlSelectors.activity1[2].text(minutesRequiredSlow + " mins");
+	htmlSelectors.activity1[3].text(`Fast pace: ${activitiesData[4].calories_per_hour} kcal/hr`);
+	htmlSelectors.activity1[4].text(minutesRequiredModerate + " mins");
+};
