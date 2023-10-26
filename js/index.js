@@ -155,6 +155,22 @@ let functionCard1 = (activitiesData, data) => {
 	htmlSelectors.activity1[2].text(minutesRequiredSlow + " mins");
 	htmlSelectors.activity1[3].text(`Fast pace: ${activitiesData[4].calories_per_hour} kcal/hr`);
 	htmlSelectors.activity1[4].text(minutesRequiredModerate + " mins");
+
+	const activity1Data = [
+        "Walking",
+        `Slow pace: ${activitiesData[3].calories_per_hour} kcal/hr`,
+        minutesRequiredSlow + " mins",
+        `Fast pace: ${activitiesData[4].calories_per_hour} kcal/hr`,
+        minutesRequiredModerate + " mins"
+    ];
+
+    // Convert the array to JSON string
+    const activity1DataString = JSON.stringify(activity1Data);
+
+    // Store the array in local storage
+    localStorage.setItem("activity1Data", activity1DataString);
+
+
 };
 
 let functionCard2 = (activitiesData, data) => {
