@@ -169,9 +169,25 @@ let functionCard1 = (activitiesData, data) => {
 
     // Store the array in local storage
     localStorage.setItem("activity1Data", activity1DataString);
-
-
+	
 };
+
+window.addEventListener('DOMContentLoaded', function() {
+	// Retrieve the data from local storage
+	const activity1DataString = localStorage.getItem('activity1Data');
+	const activity1Data = JSON.parse(activity1DataString);
+  
+	// Check if the data exists
+	if (activity1Data) {
+	// Update the HTML elements with the retrieved data
+	  htmlSelectors.activity1[0].text(activity1Data[0]);
+	  htmlSelectors.activity1[1].text(activity1Data[1]);
+	  htmlSelectors.activity1[2].text(activity1Data[2]);
+	  htmlSelectors.activity1[3].text(activity1Data[3]);
+	  htmlSelectors.activity1[4].text(activity1Data[4]);
+	}
+  });
+
 
 let functionCard2 = (activitiesData, data) => {
 	const kal = data[0].calories;
