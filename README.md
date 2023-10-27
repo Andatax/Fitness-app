@@ -4,7 +4,7 @@
 |-----------------------|----------------------------------------------------------|
 | *Description*       | StayFit is a web application designed to help users keep track of the calories in their meals and receive tailored exercise recommendations to burn those calories. Whether you're looking to maintain, lose, or gain weight, StayFit provides a simple yet effective approach to achieving your fitness goals. |
 | *Features 🌟*       | - *Search Nutrition Facts:* Find detailed nutritional information for a wide variety of foods. <br> - *Exercise Recommendations:* Receive specific exercise recommendations based on your calorie intake. <br> - *Adjustable Intensity Levels:* Choose from various exercise intensity levels to match your comfort and fitness level. <br> - *User-friendly Interface:* A sleek and intuitive design that enhances the user experience. |
-| *Screenshots 🖼️*   |                                                          |
+| *Screenshots 🖼️*   |   ![image](Assets/ScreenshotsStayFit.png)                                                       |
 | *Getting Started 🚀| 1. **Clone the repository:* `git@github.com:Andatax/StayFit-app.git` <br> 2. *Navigate to the directory:* `cd stayfit` <br> |
 | *License 📜*       | This project is licensed under the MIT License. See the [LICENSE.md](./LICENSE.md) file for details. |
 | *Acknowledgements 👏* | Special thanks to all the open-source libraries and tools that made this project possible! |
